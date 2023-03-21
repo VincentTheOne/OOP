@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Employee
+    {
+        private string _name;
+        private int _salary;
+        private readonly int _startYear;
+        private const int _retiringAge = 65;
+        private string[] _email;
+
+        public Employee()
+        {
+            _name = "Tom";
+            _salary = 300000;
+            _startYear = 2023;
+            _email = new string[0];
+    
+    }
+
+        public Employee(string name, int salary)
+        {
+            _name = name;
+            _salary = salary;
+            _startYear = 2023;
+            _email = new string[0];
+
+        }
+
+        public Employee(string name, int salary, int startYear = 2023)
+            {
+                _name = name;
+                _salary = salary;
+                _startYear = startYear;
+                _email = new string[0];
+            }
+
+
+        public Employee(string name, int salary, int startYear,params string[] email)
+        {
+            _name = name;
+            _salary = salary;
+            _startYear = startYear;
+            _email = email;
+
+            for (int i = 0; i < email.Length; i++)
+            {
+                _email[i] = email[i];
+            }
+        }
+
+        ~Employee()
+        {
+            Console.WriteLine("Destructed: " + this);
+        }
+
+        // Methods 
+        public override string ToString()
+        {
+
+            string outstr = "Name: " + _name + ", Salary: " + _salary + ", startYear: " + _startYear + "\nEmails: ";
+            for(int i = 0; i < _email.Length; i++)
+            {
+                outstr += _email[i] + ", ";
+            }
+            return outstr;
+        } 
+
+
+    }
+}
