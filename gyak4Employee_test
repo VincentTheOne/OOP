@@ -1,0 +1,81 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class EmployeeTest
+    {
+        public static void Main(string[] args)
+        {
+       /*     Employee employee = new Employee();
+            Console.WriteLine(employee);
+
+            Employee e2 = new Employee("Kate", 150000);
+            Console.WriteLine(e2);
+
+            employee = e2;
+            Console.WriteLine(employee);
+            Console.WriteLine(e2);
+            
+       */
+
+            Employee e3 = new Employee("Jane", 250000, 2023, "k@gmail.com", "t@gmail.com");
+            Console.WriteLine(e3);
+
+            Employee e4 = createEmployee();
+            Console.WriteLine(e4);
+
+        }
+
+        public static Employee createEmployee()
+        {
+                Console.WriteLine("Name: ");
+                string name = Console.ReadLine();
+                Console.WriteLine("Salary: ");
+                int salary = ReadInt(150000, 1000000);
+                Console.WriteLine("Start year: ");
+                int startyear = ReadInt(2015,2025);
+                Console.WriteLine("Number of emails: ");
+                int numOfEmail = ReadInt(0,3);
+                string[] email = new string[numOfEmail];
+
+
+            for (int i = 0; i < email.Length; i++)
+            {
+                email[i] = Console.ReadLine();
+            }
+            Employee emp = new Employee(name,salary,startyear,email);
+            return emp;
+        }
+
+        public static int ReadInt(int lower, int upper)
+        {
+            int num = 0;
+            bool ok = false;
+            do
+            {
+                do
+                {
+
+
+                    try
+                    {
+
+                        Console.WriteLine("Number: ");
+                        ok = Int32.TryParse(Console.ReadLine(), out num);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Not a number");
+
+                    }
+                } while (!ok);
+            } while (num < lower || num > upper);
+
+            return num;
+        }
+    }
+}
